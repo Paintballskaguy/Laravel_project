@@ -22,10 +22,16 @@
             @endif
         </div>
     <hr>
-    <a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit</a>
+        @if(!Auth::guest())
+            @if(Auth::user()->id == $post->user_id)
+                <hr>
+                <a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit</a>
 
-    {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-end']) !!}
-        {{ Form::hidden('_method', 'DELETE') }}
-        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-    {!! Form::close() !!}
+                {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-end'])!!}
+                    {{Form::hidden('_method', 'DELETE')}}
+                    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                {!!Form::close() !!}
+            @endif
+        @endif
+    </hr>
 @endsection

@@ -21,12 +21,7 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('posts') ? 'active' : '' }}" href="/posts">Blog</a>
                 </li>
-                {{-- Only show Create Post if user is logged in --}}
-                @auth
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('posts/create') ? 'active' : '' }}" href="/posts/create">Create Post</a>
-                    </li>
-                @endauth
+                
             </ul>
 
             <ul class="navbar-nav ms-auto">
@@ -48,7 +43,8 @@
                             {{ Auth::user()->name }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -58,7 +54,7 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-                        </div>
+                        </ul>
                     </li>
                 @endguest
             </ul>
