@@ -1,22 +1,8 @@
-//Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-//Variables
+// Variables
 @import 'variables';
 
-//Bootstrap
+// Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
-//custom styles
-@import 'custom';
-
-
-// Global styling for all "main" content areas
-main, .container {
-    .card {
-        border-radius: 8px;
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-        margin-bottom: 20px;
-        background-color: #fff; 
-    }
-}

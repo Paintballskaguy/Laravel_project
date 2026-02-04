@@ -7,7 +7,13 @@
             <div class="card mb-3 shadow-sm">
                 <div class="card-body">
                     <h3><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h3>
-                    <small class="text-muted">Written on {{ $post->created_at }}</small>
+                    <small class="text-muted">
+                @if($post->updated_at->gt($post->created_at))
+                    <span class="text-primary">Updated on {{ $post->updated_at->format('M d, Y') }}</span>
+                @else
+                    Written on {{ $post->created_at->format('M d, Y') }}
+                @endif
+            </small>
                 </div>
             </div>
         @endforeach
