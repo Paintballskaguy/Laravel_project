@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="/services">Services</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('posts') ? 'active' : '' }}" href="/posts">Blog</a>
+                </li>
             </ul>
         </div>
     </div>

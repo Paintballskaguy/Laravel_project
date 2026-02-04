@@ -9,3 +9,14 @@
 
 //custom styles
 @import 'custom';
+
+
+// Global styling for all "main" content areas
+main, .container {
+    .card {
+        border-radius: 8px;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        margin-bottom: 20px;
+        background-color: #fff; 
+    }
+}

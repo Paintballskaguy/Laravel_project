@@ -1,36 +1,43 @@
-// Body
+// 1. Body and Backgrounds
 $body-bg: #ced2da;
-//Borders
-$laravel-border-color: darken($body-bg, 10%);
-$list-group-border-color: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
-
-//Brands
+$body-color: #636b6f;
+$text-color: #636b6f;
 $brand-primary: #3097d1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb959;
-$brand-danger: #bf5329;
 
-//Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/"; // For Bootstrap icons
+// 2. Colors (Bootstrap 5 uses $primary, $success, etc.)
+$primary: #3097d1;
+$info:    #8eb4cb;
+$success: #2ab27b;
+$warning: #cbb959;
+$danger:  #bf5329;
+
+// 3. Typography
 $font-family-sans-serif: 'Roboto', Arial, sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-$text-color: #636b6f;
 
-//Navbar
-$navbar-default-bg: #fff;
+// 4. Component Styling (This ensures Cards and Navbars look right)
+$card-bg: #fff;            // This makes your posts white against the grey background
+$card-border-width: 0;      // Removes ugly borders for a cleaner look
+$card-cap-bg: #fff;
+
+// 5. Navbar (If you want the dark theme from the screenshot)
+$navbar-dark-color: rgba(#fff, .55);
+$navbar-dark-active-color: #fff;
 
 //Buttons
 $btn-default-color: $text-color;
 
-//Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: ($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
+// 3. Inputs
+$input-border-color: lighten($text-color, 40%);
+$input-focus-border-color: lighten($brand-primary, 25%); // Fixed the syntax error here
+$input-placeholder-color: lighten($text-color, 30%);
+
+// 4. Cards (In BS5, Panels were replaced by Cards)
+$card-cap-bg: #fff;
+$card-bg: #fff;
 
 //Panels
 $panel-default-heading-bg: #fff;
+
+
