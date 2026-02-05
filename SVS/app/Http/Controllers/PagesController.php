@@ -13,15 +13,15 @@ public function index() {
         return redirect('/dashboard');
     }
 
-    // LANDING PAGE: For guests, show the origin story landing page
+    // For guests, point to your dedicated welcome file
     $title = 'Welcome to SVS';    
-    return view('pages.index', compact('title'));
+    return view('pages.welcome', compact('title'));
 }
-    public function services() {
-        $data = array(
-            'title'=> 'Services',
-            'services' => ['Web Design', 'Programming', 'SEO']
-        );
-        return view('pages.services')->with($data);
-    }
+        public function services() {
+            $data = array(
+                'title' => 'Tech Support',
+                'services' => ['Network Infrastructure', 'Software Deployment', 'Security Audits', 'Cloud Systems']
+            );
+            return view('pages.services')->with($data);
+        }
 }

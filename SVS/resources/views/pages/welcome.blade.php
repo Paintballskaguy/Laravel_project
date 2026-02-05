@@ -15,19 +15,23 @@
             </div>
             <div class="col-md-6 text-center">
                 <div class="p-4 border rounded bg-light">
-                    <h4 class="mb-4">Access Central Interface</h4>
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="btn btn-fantastic btn-lg w-100 mb-2">Return to Terminal</a>
-                        @else
-                            <a href="{{ route('login') }}" class="btn btn-fantastic btn-lg w-100 mb-3">Login to Archives</a>
-                            @if (Route::has('register'))
-                                <p class="mb-1">New Ally?</p>
-                                <a href="{{ route('register') }}" class="btn btn-outline-primary w-100">Join the Team</a>
-                            @endif
-                        @endauth
-                    @endif
-                </div>
+                     <h4 class="mb-4 text-royal">Access Central Interface</h4>
+                @if (Route::has('login'))
+                    @auth
+                        {{-- Use btn-royal for the main action --}}
+                        <a href="{{ url('/dashboard') }}" class="btn btn-royal btn-lg w-100 mb-2 rounded-pill">Return to Terminal</a>
+                    @else
+                        {{-- Use btn-royal for Login --}}
+                        <a href="{{ route('login') }}" class="btn btn-royal btn-lg w-100 mb-3 rounded-pill">Login to Archives</a>
+                        
+                        @if (Route::has('register'))
+                            <p class="mb-1 text-dark fw-bold">New Ally?</p>
+                            {{-- Use btn-outline-primary for the secondary action --}}
+                            <a href="{{ route('register') }}" class="btn btn-outline-primary w-100 rounded-pill">Join the Team</a>
+                        @endif
+                    @endauth
+                @endif
+            </div>
             </div>
         </div>
     </div>

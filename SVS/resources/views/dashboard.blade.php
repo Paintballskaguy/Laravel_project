@@ -1,51 +1,69 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     @include('inc.messages')
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header" style="background-color: #9eb4dd; color: #13274C;">{{ __('Dashboard') }}</div>
-
-                <div class="container mb-3 mt-3">
-                    <a href="/posts/create" class="btn btn-primary mb-3" style="background-color: #13274C;">Create Post</a>
-                    <h3>Your Blog Posts</h3>
+        <div class="col-md-10">
+            <div class="card shadow-lg border-0 rounded-3">
+                {{-- Themed Header --}}
+                <div class="card-header bg-baby-blue text-royal d-flex justify-content-between align-items-center p-3">
+                    <h4 class="mb-0 fw-bold"><i class="fas fa-user-shield me-2"></i>{{ __('Hero Dashboard') }}</h4>
+                    <a href="/posts/create" class="btn btn-royal btn-sm rounded-pill px-4">
+                        <i class="fas fa-plus me-1"></i>Create Post
+                    </a>
                 </div>
-                <div class="card-body">
+
+                <div class="card-body bg-light">
+                    <h3 class="text-royal mb-4 border-bottom pb-2">Your Mission Logs</h3>
+                    
                     @if (count($posts) > 0)
-                        {{-- IMPORTANT: Added id="postsTable" --}}
-                        <table id="postsTable" class="table table-striped mt-3">
-                            <thead>
-                                <tr>
-                                    <th></th> 
-                                    <th>Title</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($posts as $post)
+                        <div class="table-responsive">
+                            <table id="postsTable" class="table table-hover align-middle bg-white rounded shadow-sm">
+                                <thead class="table-secondary">
                                     <tr>
-                                        <td style="width: 80px;">
-                                            <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}" alt="Post Image">
-                                        </td>
-                                        <td><a href="/posts/{{$post->id}}" class="text-decoration-none fw-bold" style="color: #13274C;">
-                                            {{$post->title}}
-                                        </a></td>
-                                        <td><a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit</a></td>
-                                        <td>
-                                            {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-end delete-form']) !!}
-                                                {{ Form::hidden('_method', 'DELETE') }}
-                                                <button type="button" class="btn btn-danger btn-sm confirm-delete">Delete</button>
-                                            {!! Form::close() !!}
-                                        </td>
+                                        <th style="width: 100px;">VISUAL</th>
+                                        <th>MISSION TITLE</th>
+                                        <th style="width: 100px;" class="text-center">EDIT</th>
+                                        <th style="width: 120px;" class="text-end">ACTION</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($posts as $post)
+                                        <tr>
+                                            <td>
+                                                <img style="width: 80px; height: 60px; object-fit: cover;" src="/storage/cover_images/{{$post->cover_image}}" class="rounded border">
+                                            </td>
+                                            <td>
+                                                <a href="/posts/{{$post->id}}" class="text-decoration-none fw-bold text-royal">
+                                                    {{$post->title}}
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                {{-- Force visibility with inline styles --}}
+                                                <a href="/posts/{{$post->id}}/edit" 
+                                                class="btn btn-sm fw-bold px-3" 
+                                                style="background-color: #9eb4dd !important; color: #13274C !important; display: inline-block !important; visibility: visible !important;">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
+                                            </td>
+                                            <td class="text-end">
+                                                {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'delete-form']) !!}
+                                                    {{ Form::hidden('_method', 'DELETE') }}
+                                                    <button type="button" class="btn btn-outline-danger btn-sm rounded-pill confirm-delete">
+                                                        <i class="fas fa-trash-alt"></i> Delete
+                                                    </button>
+                                                {!! Form::close() !!}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @else
-                        <p>You have no posts.</p>
+                        <div class="alert alert-info border-0 shadow-sm">
+                            <i class="fas fa-info-circle me-2"></i>You have no active mission logs in the archive.
+                        </div>
                     @endif
                 </div>
             </div>
@@ -55,26 +73,31 @@
 
 <script>
 $(document).ready(function() {
-    // Initialize DataTable
+    // Initialize DataTable with Baxter Building styling
     $('#postsTable').DataTable({
         "pageLength": 5,
         "order": [[1, "asc"]],
         "language": {
-            "search": "Filter posts:"
+            "search": "SCAN YOUR LOGS:",
+            "lengthMenu": "SHOW _MENU_",
+            "info": "Displaying _START_ to _END_ of _TOTAL_ entries"
         }
     });
 
-    // Handle Delete Confirmation
+    // Handle Delete Confirmation with Themed SweetAlert
     $('.confirm-delete').on('click', function(e) {
         let form = $(this).closest('form');
         Swal.fire({
-            title: "Are you sure?",
-            text: "This technician's post will be removed!",
+            title: "DELETING ARCHIVE?",
+            text: "This technician's post will be permanently removed from the Baxter Building database!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#13274C", // Royal Blue
             cancelButtonColor: "#9eb4dd",  // Baby Blue
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "YES, DELETE IT",
+            cancelButtonText: "ABORT",
+            background: "#f8fafc",
+            color: "#13274C"
         }).then((result) => {
             if (result.isConfirmed) {
                 form.submit();
