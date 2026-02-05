@@ -14,4 +14,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+    protected $fillable = [
+    'title', 
+    'body', 
+    'cover_image' ,
+    ];
 }

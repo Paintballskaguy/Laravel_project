@@ -1,0 +1,133 @@
+// Custom Card Header Styling
+.card-header {
+    background-color: $baby-blue !important;
+    color: $royal-blue !important;
+    font-weight: 700;
+}
+
+// DataTables Search Bar focus color
+.dataTables_filter input:focus {
+    border-color: $royal-blue;
+    box-shadow: 0 0 0 0.25rem rgba(19, 39, 76, 0.25);
+}
+
+    // Custom button for the SweetAlerts (if you want a specific class)
+    .btn-royal {
+        background-color: $royal-blue;
+        color: white;
+        &:hover {
+            background-color: mix(#fff, $royal-blue, 10%);
+            color: white;
+        }
+
+            .login-page {
+            background: radial-gradient(circle, #f8fafc 0%, #9eb4dd 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-card {
+            border-top: 5px solid #13274C !important;
+        }
+
+/* BAXTER BUILDING LOGO OVERRIDE */
+.navbar-brand {
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.navbar-brand {
+    padding: 0 !important;
+    margin-right: 1.5rem !important;
+}
+
+.f4-mcu-logo-only {
+    height: 40px; 
+    width: auto;
+    transition: filter 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        /* Subtle "Cosmic" glow on hover */
+        filter: drop-shadow(0 0 8px #9eb4dd);
+        transform: scale(1.05);
+    }
+}
+
+/* Keep the search bar consistent across the building */
+.dataTables_filter input {
+    border: 2px solid #9eb4dd !important; /* Baby Blue border */
+    border-radius: 20px !important;
+    padding: 6px 15px !important;
+    color: #13274C;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+/* Style the text inside the archives table */
+/* Force Hero Names to be Black */
+#archivesTable {
+    .badge.hero-name, 
+    .text-dark {
+        color: #000000 !important; 
+        -webkit-text-fill-color: #000000 !important; /* Some browsers need this for badges */
+        font-weight: 800 !important;
+    }
+}
+
+.bg-royal {
+    background-color: $royal-blue !important;
+}
+
+.text-royal {
+    color: $royal-blue !important;
+}
+
+.btn-royal {
+    background-color: $royal-blue;
+    color: white;
+    &:hover {
+        background-color: lighten($royal-blue, 10%);
+        color: white;
+    }
+}
+
+.btn-baby-blue {
+    background-color: $baby-blue;
+    color: $royal-blue;
+    border: 1px solid $royal-blue;
+    &:hover {
+        background-color: darken($baby-blue, 10%);
+    }
+}
+
+/* DataTables Customization */
+.dataTables_filter input {
+    border: 2px solid $baby-blue !important;
+    border-radius: 20px !important;
+    padding: 5px 15px !important;
+    margin-bottom: 10px;
+    &:focus {
+        border-color: $royal-blue !important;
+        box-shadow: 0 0 5px rgba(158, 180, 221, 0.5);
+        outline: none;
+    }
+}
+/* Baxter Building ID Badge Styling */
+.hero-name {
+    color: #000000 !important; /* Force solid black text */
+    font-weight: 800 !important; /* Extra bold for readability */
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase; /* Makes it look like an official ID */
+    display: inline-block;
+    min-width: 120px; /* Keeps badges uniform in size */
+    text-align: center;
+}
+
+/* Ensure the pill border is visible against the light background */
+.border-primary {
+    border-color: #13274C !important; /* Use your Royal Blue for the border */
+}
+}

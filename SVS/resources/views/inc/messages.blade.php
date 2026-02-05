@@ -27,16 +27,15 @@
     </div>
 @endif
 
-@if (session('status'))
+@if (isset($test_alert))
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             Swal.fire({
-                title: 'Welcome back, {{ Auth::user()->name }}!',
-                text: "{{ session('status') }}",
-                icon: 'success',
-                timer: 4000,
-                showConfirmButton: false
+                title: 'Success!',
+                text: "{{ $test_alert }}",
+                icon: 'success'
             });
         });
     </script>
+
 @endif
